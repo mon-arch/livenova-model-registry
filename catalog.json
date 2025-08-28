@@ -1,0 +1,34 @@
+{
+  "models": [
+    {
+      "id": "phi-mini",
+      "repo": "https://huggingface.co/acrkaan/livenova-llm-phi3_5-mini-instruct-q4km-gguf",
+      "manifest_url": "https://huggingface.co/acrkaan/livenova-llm-phi3_5-mini-instruct-q4km-gguf/resolve/main/manifest.json"
+    },
+    {
+      "id": "mistral-7b",
+      "repo": "https://huggingface.co/acrkaan/livenova-llm-mistral-7b-instruct-q4km-gguf",
+      "manifest_url": "https://huggingface.co/acrkaan/livenova-llm-mistral-7b-instruct-q4km-gguf/resolve/main/manifest.json"
+    },
+    {
+      "id": "blip-base",
+      "repo": "https://huggingface.co/acrkaan/livenova-vision-blip-base-onnx",
+      "manifest_url": "https://huggingface.co/acrkaan/livenova-vision-blip-base-onnx/resolve/main/manifest.json"
+    },
+    {
+      "id": "llava-1_6-mistral-7b",
+      "repo": "https://huggingface.co/acrkaan/livenova-vlm-llava-v1_6-mistral-7b-gguf",
+      "manifest_url": "https://huggingface.co/acrkaan/livenova-vlm-llava-v1_6-mistral-7b-gguf/resolve/main/manifest.json"
+    },
+    {
+      "id": "whisper-small",
+      "repo": "https://huggingface.co/acrkaan/livenova-stt-whisper-small-onnx",
+      "manifest_url": "https://huggingface.co/acrkaan/livenova-stt-whisper-small-onnx/resolve/main/manifest.json"
+    },
+    {
+      "id": "piper-core",
+      "repo": "https://huggingface.co/acrkaan/livenova-tts-piper-core",
+      "manifest_url": "https://huggingface.co/acrkaan/livenova-tts-piper-core/resolve/main/manifest.json"
+    }
+  ]
+}
