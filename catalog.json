@@ -28,16 +28,7 @@
         "desktop_gpu": "fp16"
       },
       "variants": [
-        {
-          "id": "fp32",
-          "display_name": "FP32",
-          "precision": "fp32",
-          "quantization": null,
-          "hf_url": "https://huggingface.co/acrkaan/LiveNova_MobileNetV2_ONNX_fp32",
-          "artifact": "model.onnx",
-          "card_title": "Heavy | Accuracy: Very High | Speed: Slow",
-          "tags": ["baseline", "high-fidelity"]
-        },
+
         {
           "id": "fp16",
           "display_name": "FP16",
@@ -47,17 +38,6 @@
           "artifact": "model_fp16.onnx",
           "card_title": "Medium | Accuracy: High | Speed: Medium-Fast",
           "tags": ["gpu-friendly", "nnapi-fp16"]
-        },
-        {
-          "id": "int8",
-          "display_name": "INT8",
-          "precision": "int8",
-          "quantization": "dynamic",
-          "hf_url": "https://huggingface.co/acrkaan/LiveNova_MobileNetV2_ONNX_int8",
-          "artifact": "model_int8.onnx",
-          "card_title": "Light | Accuracy: Medium-High | Speed: Fast",
-          "tags": ["cpu-best", "low-ram"],
-          "recommended": true
         },
         {
           "id": "uint8",
