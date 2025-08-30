@@ -1,34 +1,105 @@
 {
+  "catalog_version": "1.0",
+  "generated_by": "LiveNova",
   "models": [
     {
-      "id": "phi-mini",
-      "repo": "https://huggingface.co/acrkaan/livenova-llm-phi3_5-mini-instruct-q4km-gguf",
-      "manifest_url": "https://huggingface.co/acrkaan/livenova-llm-phi3_5-mini-instruct-q4km-gguf/resolve/main/manifest.json"
-    },
-    {
-      "id": "mistral-7b",
-      "repo": "https://huggingface.co/acrkaan/livenova-llm-mistral-7b-instruct-q4km-gguf",
-      "manifest_url": "https://huggingface.co/acrkaan/livenova-llm-mistral-7b-instruct-q4km-gguf/resolve/main/manifest.json"
-    },
-    {
-      "id": "blip-base",
-      "repo": "https://huggingface.co/acrkaan/livenova-vision-blip-base-onnx",
-      "manifest_url": "https://huggingface.co/acrkaan/livenova-vision-blip-base-onnx/resolve/main/manifest.json"
-    },
-    {
-      "id": "llava-1_6-mistral-7b",
-      "repo": "https://huggingface.co/acrkaan/livenova-vlm-llava-v1_6-mistral-7b-gguf",
-      "manifest_url": "https://huggingface.co/acrkaan/livenova-vlm-llava-v1_6-mistral-7b-gguf/resolve/main/manifest.json"
-    },
-    {
-      "id": "whisper-small",
-      "repo": "https://huggingface.co/acrkaan/livenova-stt-whisper-small-onnx",
-      "manifest_url": "https://huggingface.co/acrkaan/livenova-stt-whisper-small-onnx/resolve/main/manifest.json"
-    },
-    {
-      "id": "piper-core",
-      "repo": "https://huggingface.co/acrkaan/livenova-tts-piper-core",
-      "manifest_url": "https://huggingface.co/acrkaan/livenova-tts-piper-core/resolve/main/manifest.json"
+      "id": "livenova-mobilenetv2-onnx",
+      "name": "LiveNova MobileNetV2",
+      "task": "vision-encoder",
+      "architecture": "MobileNetV2",
+      "format": "onnx",
+      "input_spec": {
+        "image_size": 224,
+        "channels": 3,
+        "layout": "NCHW",
+        "normalize": {
+          "mean": [0.485, 0.456, 0.406],
+          "std": [0.229, 0.224, 0.225]
+        }
+      },
+      "labels": {
+        "source": "imagenet-1k",
+        "file": "labels.txt",
+        "optional": true
+      },
+      "recommended_by_platform": {
+        "android_cpu": "int8",
+        "android_gpu_fp16_or_nnapi": "fp16",
+        "desktop_gpu": "fp16"
+      },
+      "variants": [
+        {
+          "id": "fp32",
+          "display_name": "FP32",
+          "precision": "fp32",
+          "quantization": null,
+          "hf_url": "https://huggingface.co/acrkaan/LiveNova_MobileNetV2_ONNX_fp32",
+          "artifact": "model.onnx",
+          "card_title": "Heavy | Accuracy: Very High | Speed: Slow",
+          "tags": ["baseline", "high-fidelity"]
+        },
+        {
+          "id": "fp16",
+          "display_name": "FP16",
+          "precision": "fp16",
+          "quantization": null,
+          "hf_url": "https://huggingface.co/acrkaan/LiveNova_MobileNetV2_ONNX_fp16",
+          "artifact": "model_fp16.onnx",
+          "card_title": "Medium | Accuracy: High | Speed: Medium-Fast",
+          "tags": ["gpu-friendly", "nnapi-fp16"]
+        },
+        {
+          "id": "int8",
+          "display_name": "INT8",
+          "precision": "int8",
+          "quantization": "dynamic",
+          "hf_url": "https://huggingface.co/acrkaan/LiveNova_MobileNetV2_ONNX_int8",
+          "artifact": "model_int8.onnx",
+          "card_title": "Light | Accuracy: Medium-High | Speed: Fast",
+          "tags": ["cpu-best", "low-ram"],
+          "recommended": true
+        },
+        {
+          "id": "uint8",
+          "display_name": "UINT8",
+          "precision": "uint8",
+          "quantization": "dynamic",
+          "hf_url": "https://huggingface.co/acrkaan/LiveNova_MobileNetV2_ONNX_uint8",
+          "artifact": "model_uint8.onnx",
+          "card_title": "Light | Accuracy: Medium-High | Speed: Fast",
+          "tags": ["cpu-best", "compat"]
+        },
+        {
+          "id": "quantized",
+          "display_name": "Quantized (INT8)",
+          "precision": "int8",
+          "quantization": "static-or-dynamic",
+          "hf_url": "https://huggingface.co/acrkaan/LiveNova_MobileNetV2_ONNX_quantized",
+          "artifact": "model_quantized.onnx",
+          "card_title": "Light | Accuracy: Medium-High | Speed: Fast",
+          "tags": ["cpu", "small"]
+        },
+        {
+          "id": "bnb4",
+          "display_name": "BNB4 (4-bit)",
+          "precision": "nf4",
+          "quantization": "bnb4",
+          "hf_url": "https://huggingface.co/acrkaan/LiveNova_MobileNetV2_ONNX_bnb4",
+          "artifact": "model_bnb4.onnx",
+          "card_title": "Very Light | Accuracy: Medium | Speed: Medium-Slow",
+          "tags": ["very-small", "experimental"]
+        },
+        {
+          "id": "q4",
+          "display_name": "Q4 (4-bit)",
+          "precision": "int4",
+          "quantization": "linear",
+          "hf_url": "https://huggingface.co/acrkaan/LiveNova_MobileNetV2_ONNX_q4",
+          "artifact": "model_q4.onnx",
+          "card_title": "Very Light | Accuracy: Medium-Low | Speed: Slowest (CPU)",
+          "tags": ["tiny", "accuracy-drop"]
+        }
+      ]
     }
   ]
 }
