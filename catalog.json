@@ -28,7 +28,6 @@
         "desktop_gpu": "fp16"
       },
       "variants": [
-
         {
           "id": "fp16",
           "display_name": "FP16",
@@ -78,6 +77,105 @@
           "artifact": "model_q4.onnx",
           "card_title": "Very Light | Accuracy: Medium-Low | Speed: Slowest (CPU)",
           "tags": ["tiny", "accuracy-drop"]
+        }
+      ]
+    },
+    {
+      "id": "fastvlm-0_5b-onnx",
+      "name": "FastVLM 0.5B",
+      "task": "vision-language",
+      "capabilities": ["captioning", "vqa"],
+      "architecture": "FastVLM-0.5B",
+      "format": "onnx",
+      "input_spec": {
+        "image_size": 224,
+        "channels": 3,
+        "layout": "NCHW",
+        "normalize": {
+          "mean": [0.485, 0.456, 0.406],
+          "std": [0.229, 0.224, 0.225]
+        }
+      },
+      "text_input": {
+        "tokenizer": "bpe",
+        "max_length": 128,
+        "prompt_template": "USER: {question}\nASSISTANT:"
+      },
+      "recommended_by_platform": {
+        "android_cpu": "int8",
+        "android_gpu_fp16_or_nnapi": "fp16",
+        "desktop_gpu": "fp16"
+      },
+      "variants": [
+        {
+          "id": "fp16",
+          "display_name": "FP16",
+          "precision": "fp16",
+          "quantization": null,
+          "hf_url": "https://huggingface.co/acrkaan/FastVLM-0.5B-ONNX-fp16",
+          "artifact": "model_fp16.onnx",
+          "card_title": "Medium | Accuracy: High | Speed: Medium-Fast",
+          "tags": ["gpu-friendly", "nnapi-fp16"]
+        },
+        {
+          "id": "int8",
+          "display_name": "INT8",
+          "precision": "int8",
+          "quantization": "static",
+          "hf_url": "https://huggingface.co/acrkaan/FastVLM-0.5B-ONNX-int8",
+          "artifact": "model_int8.onnx",
+          "card_title": "Light | Accuracy: Medium-High | Speed: Fast",
+          "tags": ["cpu", "small"]
+        },
+        {
+          "id": "uint8",
+          "display_name": "UINT8",
+          "precision": "uint8",
+          "quantization": "dynamic",
+          "hf_url": "https://huggingface.co/acrkaan/FastVLM-0.5B-ONNX-uint8",
+          "artifact": "model_uint8.onnx",
+          "card_title": "Light | Accuracy: Medium | Speed: Fast",
+          "tags": ["cpu-best", "compat"]
+        },
+        {
+          "id": "quantized",
+          "display_name": "Quantized (INT8)",
+          "precision": "int8",
+          "quantization": "static-or-dynamic",
+          "hf_url": "https://huggingface.co/acrkaan/FastVLM-0.5B-ONNX-quantized",
+          "artifact": "model_quantized.onnx",
+          "card_title": "Light | Accuracy: Medium-High | Speed: Fast",
+          "tags": ["cpu", "portable"]
+        },
+        {
+          "id": "bnb4",
+          "display_name": "BNB4 (4-bit)",
+          "precision": "nf4",
+          "quantization": "bnb4",
+          "hf_url": "https://huggingface.co/acrkaan/FastVLM-0.5B-ONNX-bnb4",
+          "artifact": "model_bnb4.onnx",
+          "card_title": "Very Light | Accuracy: Medium | Speed: Medium-Slow",
+          "tags": ["very-small", "experimental"]
+        },
+        {
+          "id": "q4",
+          "display_name": "Q4 (4-bit)",
+          "precision": "int4",
+          "quantization": "linear",
+          "hf_url": "https://huggingface.co/acrkaan/FastVLM-0.5B-ONNX-q4",
+          "artifact": "model_q4.onnx",
+          "card_title": "Very Light | Accuracy: Medium-Low | Speed: Slowest (CPU)",
+          "tags": ["tiny", "accuracy-drop"]
+        },
+        {
+          "id": "q4f16",
+          "display_name": "Q4-FP16 (Mixed)",
+          "precision": "int4-fp16",
+          "quantization": "linear-mixed",
+          "hf_url": "https://huggingface.co/acrkaan/FastVLM-0.5B-ONNX-q4f16",
+          "artifact": "model_q4f16.onnx",
+          "card_title": "Tiny | Accuracy: Medium | Speed: Medium",
+          "tags": ["mixed-precision", "gpu-ok"]
         }
       ]
     }
